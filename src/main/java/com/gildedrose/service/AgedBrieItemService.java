@@ -7,7 +7,7 @@ import static com.gildedrose.appConstants.QualityConstants.MAX_QUALITY;
 /**
  * Service for updating aged brie items
  */
-class AgedBrieItemService {
+public class AgedBrieItemService {
 
     /**
      * update an item.
@@ -15,7 +15,7 @@ class AgedBrieItemService {
      * @param item the item to update.
      * @return the updated item.
      */
-    Item update(Item item) {
+    public Item update(Item item) {
 
         item.sellIn--;
         // The quality of an item cannot be greater than the max value

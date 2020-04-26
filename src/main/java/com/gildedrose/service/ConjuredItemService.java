@@ -5,9 +5,9 @@ import com.gildedrose.domain.Item;
 import static com.gildedrose.appConstants.QualityConstants.MIN_QUALITY;
 
 /**
- * Service for updating common items
+ * Service for updating conjured items
  */
-public class CommonItemService {
+public class ConjuredItemService {
 
     /**
      * update an item.
@@ -19,8 +19,8 @@ public class CommonItemService {
 
         item.sellIn--;
 
-        // decrease quality of an item by 1 if its sell in is not passed and 2 otherwise
-        item.quality = item.sellIn <= 0 ? item.quality - 2 : item.quality - 1;
+        // decrease quality of an item by 2 if its sell in is not passed and 4 otherwise
+        item.quality = item.sellIn <= 0 ? item.quality - 4 : item.quality - 2;
 
         // The quality of an item cannot be lower than the min value
         if( item.quality < MIN_QUALITY) {

@@ -2,10 +2,7 @@ package com.gildedrose.controller;
 
 import com.gildedrose.domain.Item;
 import com.gildedrose.domain.ItemType;
-import com.gildedrose.service.AgedBrieItemService;
-import com.gildedrose.service.BackstageItemService;
-import com.gildedrose.service.CommonItemService;
-import com.gildedrose.service.SulfurasItemService;
+import com.gildedrose.service.*;
 
 public class GildedRose {
 
@@ -14,6 +11,7 @@ public class GildedRose {
     AgedBrieItemService agedBrieService;
     BackstageItemService backstageItemService;
     SulfurasItemService sulfurasItemService;
+    ConjuredItemService conjuredItemService;
 
     Item[] items;
 
@@ -21,12 +19,14 @@ public class GildedRose {
                       AgedBrieItemService agedBrieService,
                       BackstageItemService backstageItemService,
                       SulfurasItemService sulfurasItemService,
+                      ConjuredItemService conjuredItemService,
                       Item[] items) {
 
         this.commonItemService = commonItemService;
         this.agedBrieService = agedBrieService;
         this.backstageItemService = backstageItemService;
         this.sulfurasItemService = sulfurasItemService;
+        this.conjuredItemService = conjuredItemService;
         this.items = items;
     }
 
@@ -51,6 +51,9 @@ public class GildedRose {
                     break;
                 case SULFURAS:
                     items[itemIndex] = sulfurasItemService.update(items[itemIndex]);
+                    break;
+                case CONJURED:
+                    items[itemIndex] = conjuredItemService.update(items[itemIndex]);
                     break;
                 default:
                     throw new UnsupportedOperationException("This should not happen");

@@ -4,7 +4,8 @@ public enum ItemType {
     COMMON,
     AGEDBRIE,
     BACKSTAGE,
-    SULFURAS;
+    SULFURAS,
+    CONJURED;
 
     public static ItemType fromName(String name) {
         switch (name) {
@@ -14,6 +15,8 @@ public enum ItemType {
                 return BACKSTAGE;
             case "Sulfuras, Hand of Ragnaros":
                 return SULFURAS;
+            case "Conjured Mana Cake":
+                return CONJURED;
             default:
                 return COMMON;
         }

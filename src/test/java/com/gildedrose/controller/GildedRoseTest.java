@@ -1,10 +1,7 @@
 package com.gildedrose.controller;
 
 import com.gildedrose.domain.Item;
-import com.gildedrose.service.AgedBrieItemService;
-import com.gildedrose.service.BackstageItemService;
-import com.gildedrose.service.CommonItemService;
-import com.gildedrose.service.SulfurasItemService;
+import com.gildedrose.service.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,6 +23,8 @@ class GildedRoseTest {
     BackstageItemService backstageItemService;
     @Mock
     SulfurasItemService sulfurasItemService;
+    @Mock
+    ConjuredItemService conjuredItemService;
 
     GildedRose gildedRose;
 
@@ -43,20 +42,18 @@ class GildedRoseTest {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
         resultExpected =  new Item[] {
                 new Item("+5 Dexterity Vest", 9, 19), //
-                new Item("Aged Brie", 1, 0), //
+                new Item("Aged Brie", 1, 1), //
                 new Item("Elixir of the Mongoose", 4, 6), //
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80), //
                 new Item("Sulfuras, Hand of Ragnaros", 0, 80),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50),
-                // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 2, 5) };
+                new Item("Conjured Mana Cake", 2, 4) };
 
     }
     @BeforeEach
@@ -66,6 +63,7 @@ class GildedRoseTest {
                                     agedBrieService,
                                     backstageItemService,
                                     sulfurasItemService,
+                                    conjuredItemService,
                                     items);
     }
 
@@ -88,7 +86,7 @@ class GildedRoseTest {
                 .thenReturn(resultExpected[6]);
         when(backstageItemService.update(items[7]))
                 .thenReturn(resultExpected[7]);
-        when(commonItemService.update(items[8]))
+        when(conjuredItemService.update(items[8]))
                 .thenReturn(resultExpected[8]);
 
         // WHEN
