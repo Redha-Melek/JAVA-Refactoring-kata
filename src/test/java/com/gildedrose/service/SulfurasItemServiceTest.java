@@ -22,7 +22,7 @@ class SulfurasItemServiceTest {
         Item item = new Item("Sulfuras, Hand of Ragnaros", 2, 80);
         Item updatedItem = sulfurasItemService.update(item);
 
-        assertThat(updatedItem.sellIn).isEqualTo(2);
+        assertThat(updatedItem.sellIn).isEqualTo(0);
         assertThat(updatedItem.quality).isEqualTo(80);
     }
 

@@ -1,10 +1,7 @@
 package com.gildedrose.controller;
 
 import com.gildedrose.domain.Item;
-import com.gildedrose.service.AgedBrieItemService;
-import com.gildedrose.service.BackstageItemService;
-import com.gildedrose.service.CommonItemService;
-import com.gildedrose.service.SulfurasItemService;
+import com.gildedrose.service.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +20,7 @@ class GildedRoseTestIT {
     AgedBrieItemService agedBrieService;
     BackstageItemService backstageItemService;
     SulfurasItemService sulfurasItemService;
+    ConjuredItemService conjuredItemService;
 
     GildedRose gildedRose;
 
@@ -40,7 +38,6 @@ class GildedRoseTestIT {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-                // this conjured item does not work properly yet
                 new Item("Conjured Mana Cake", 3, 6) };
 
         resultExpected =  new Item[] {
@@ -52,8 +49,7 @@ class GildedRoseTestIT {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 14, 21),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 9, 50),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 4, 50),
-                // this conjured item does not work properly yet
-                new Item("Conjured Mana Cake", 2, 5) };
+                new Item("Conjured Mana Cake", 2, 4) };
 
     }
     @BeforeEach
@@ -63,11 +59,13 @@ class GildedRoseTestIT {
         agedBrieService = new AgedBrieItemService();
         backstageItemService = new BackstageItemService();
         sulfurasItemService = new SulfurasItemService();
+        conjuredItemService = new ConjuredItemService();
 
         gildedRose = new GildedRose(commonItemService,
                                     agedBrieService,
                                     backstageItemService,
                                     sulfurasItemService,
+                                    conjuredItemService,
                                     items);
     }
 
